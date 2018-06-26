@@ -2,10 +2,9 @@ language: python
 sudo: required
 python:
     - '3.6'
-    - '2.7'
 install:
     - pip install 'numpy>=1.14'
-    - pip install 'keras==2.2.0'
+    - pip install 'git+https://github.com/keras-team/keras@7fe2a04754e7a8d25f45a67a90e0ebd23beeed14'
     - pip install 'opencv-python>=3.3.0'
     - pip install 'pillow'
     - pip install 'tensorflow'
@@ -17,4 +16,4 @@ install:
     - pip install 'git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI'
 cache: pip
 script:
-    - py.test --flake8
+    - python -m pytest tests/bin/test_train.py --flake8 -x
